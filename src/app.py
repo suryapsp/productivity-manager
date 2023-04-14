@@ -13,14 +13,20 @@ class courses(db.Model):
     completion_status = db.Column(db.String(30), nullable=False)
 
     def __repr__(self) -> str:
-        return f"{self.course_name} | {self.course_status}"
+        return f"{self.course_name} | {self.completion_status}"
 
 #index page
 @app.route("/")
 def hello_world():
-    return render_template('index.html')
+    # status = courses(course_name="C programming", completion_status="not started")
+    # db.session.add(status)
+    # db.session.commit()
+    allCourses = courses.query.all()
+    return render_template('index.html', allCourses=allCourses)
 
 #login page
 @app.route("/login")
 def login():
+    allCourses = courses.query.all()
+    print(allCourses)
     return "login page"
