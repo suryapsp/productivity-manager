@@ -29,19 +29,7 @@ def hello_world():
     allCourses = courses.query.all()
     return render_template('index.html', allCourses=allCourses)
 
-#login page
-@app.route("/login")
-def login():
-    allCourses = courses.query.all()
-    print(allCourses)
-    return "login page"
-
-@app.route("/update")
-def update():
-    allCourses = courses.query.all()
-    print(allCourses)
-    return "login page"
-
+#delete
 @app.route("/delete/<course_name>")
 def delete(course_name):
     course = courses.query.filter_by(course_name = course_name).first()
