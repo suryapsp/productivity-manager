@@ -34,6 +34,7 @@
               <tr>
                 <th scope="col">Course Name</th>
                 <th scope="col">Completion Status</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -41,6 +42,11 @@
                 <tr>
                     <th scope="row">{{courses.course_name}}</th>
                     <td>{{courses.completion_status}}</td>
+                    <td>
+                      <a href="/update/{{courses.course_name}}" type="button" class="btn btn-primary btn-sm mx-1">Update</a>
+                      <a href="/delete/{{courses.course_name}}" type="button" class="btn btn-danger btn-sm mx-1">Delete</a>
+                      
+                    </td>
                 </tr>
                 {% endfor %}
               

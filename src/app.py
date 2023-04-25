@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 #config
@@ -20,7 +20,7 @@ class courses(db.Model):
 #index page
 @app.route("/", methods=['GET', 'POST'])
 def hello_world():
-    if request.method == "post":
+    if request.method == "POST":
         title = request.form['title']
         desc = request.form['desc']
         status = courses(course_name=title, completion_status=desc)
@@ -35,3 +35,16 @@ def login():
     allCourses = courses.query.all()
     print(allCourses)
     return "login page"
+
+@app.route("/update")
+def update():
+    allCourses = courses.query.all()
+    print(allCourses)
+    return "login page"
+
+@app.route("/delete/<course_name>")
+def delete(course_name):
+    course = courses.query.filter_by(course_name = course_name).first()
+    db.session.delete(course)
+    db.session.commit()
+    return redirect("/")
