@@ -3,11 +3,11 @@
 
 A To-Do app that helps you manage your productivity.
 
-## Live Demo
+<!---## Live Demo
 
 https://productivitymanager.pythonanywhere.com/
-
-## Run Locally
+-->
+# Run Locally
 
 Clone the project
 
